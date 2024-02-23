@@ -5,6 +5,8 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
+
+        // Test
 //        Solution1 solution1 = new Solution1();
 //        int res = solution1.isCentered(new int[] {123});
 //        System.out.println(res);
