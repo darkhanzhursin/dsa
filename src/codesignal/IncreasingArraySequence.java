@@ -1,4 +1,4 @@
-package codesignals;
+package codesignal;
 
 public class IncreasingArraySequence {
 

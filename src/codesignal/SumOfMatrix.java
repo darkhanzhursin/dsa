@@ -1,4 +1,4 @@
-package codesignals;
+package codesignal;
 
 public class SumOfMatrix {
     static int solution(int[][] matrix) {
