@@ -1,6 +1,16 @@
 package codesignal.intro;
 
+/**
+ * This is a javadoc for class
+ * @author Darkhan Zhursin
+ * */
 public class Minesweeper {
+
+    /**
+     *
+     * @param matrix 2d boolean array
+     * @return 2d int array
+     */
     static int[][] solution(boolean[][] matrix) {
         int start = 0;
         int rows = matrix.length;
@@ -28,24 +38,6 @@ public class Minesweeper {
                 }
             }
         }
-
-//        for (int i = 0; i < rows; i++) {
-//            for (int j = 0; j < cols; j++) {
-//
-//                int count = 0;
-//                for (int r = i - 1; r <= i + 1; r++) {
-//                    for (int c = j - 1; c <= j + 1; c++) {
-//                        if (r >= 0 && r < rows && c >= 0 && c < cols && matrix[r][c]) {
-//                            count++;
-//                        }
-//                    }
-//                }
-//                ans[i][j] = count;
-//
-//            }
-//        }
-
-
         return ans;
     }
 
