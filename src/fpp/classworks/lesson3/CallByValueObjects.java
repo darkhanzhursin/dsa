@@ -1,6 +1,6 @@
-package fpp.lesson3;
+package fpp.classworks.lesson3;
 
-import fpp.oop.Employee;
+import fpp.classworks.oop.Employee;
 
 public class CallByValueObjects {
 

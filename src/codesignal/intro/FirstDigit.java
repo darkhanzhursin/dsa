@@ -6,6 +6,7 @@ public class FirstDigit {
             if (Character.isDigit(c)) return c;
         }
         return '0';
+
     }
 
     public static void main(String[] args) {

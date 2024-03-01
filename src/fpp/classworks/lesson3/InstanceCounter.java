@@ -1,4 +1,4 @@
-package fpp.lesson3;
+package fpp.classworks.lesson3;
 
 public class InstanceCounter {
 

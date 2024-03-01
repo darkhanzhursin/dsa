@@ -1,4 +1,4 @@
-package fpp.oop;
+package fpp.classworks.oop;
 
 public class Main {
 

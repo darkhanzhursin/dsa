@@ -1,4 +1,4 @@
-package fpp;
+package fpp.classworks.lesson2;
 
 public class StringMethods {
 

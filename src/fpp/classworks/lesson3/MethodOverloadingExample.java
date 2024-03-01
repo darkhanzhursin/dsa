@@ -1,4 +1,4 @@
-package fpp.lesson3;
+package fpp.classworks.lesson3;
 
 // Changing the signature of methods
 // 1. The number of parameters in two methods.

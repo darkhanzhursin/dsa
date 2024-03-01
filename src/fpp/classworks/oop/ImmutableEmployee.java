@@ -1,4 +1,4 @@
-package fpp.oop;
+package fpp.classworks.oop;
 
 /*
    - Declare the class as final so it can't be extended.

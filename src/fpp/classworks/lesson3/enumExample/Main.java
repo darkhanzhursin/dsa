@@ -1,4 +1,4 @@
-package fpp.lesson3.enumExample;
+package fpp.classworks.lesson3.enumExample;
 
 public class Main {
 
