@@ -1,4 +1,4 @@
-package fpp.classworks.oop;
+package fpp.classworks.immutable;
 
 public class Employee {
     private String name;
