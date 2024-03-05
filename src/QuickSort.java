@@ -6,14 +6,14 @@ public class QuickSort {
         if (begin < end) {
             int partioitonIndex = partition(arr, begin, end);
 
-            quickSort(arr, begin, partioitonIndex-1);
-            quickSort(arr, partioitonIndex+1, end);
+            quickSort(arr, begin, partioitonIndex - 1);
+            quickSort(arr, partioitonIndex + 1, end);
         }
     }
 
     private int partition(int[] arr, int begin, int end) {
         int pivot = arr[end];
-        int i = (begin-1);
+        int i = (begin - 1);
 
         for (int j = begin; j < end; j++) {
             if (arr[j] <= pivot) {
@@ -25,11 +25,11 @@ public class QuickSort {
             }
         }
 
-        int swapTemp = arr[i+1];
-        arr[i+1] = arr[end];
+        int swapTemp = arr[i + 1];
+        arr[i + 1] = arr[end];
         arr[end] = swapTemp;
 
-        return i+1;
+        return i + 1;
     }
 
     @Override

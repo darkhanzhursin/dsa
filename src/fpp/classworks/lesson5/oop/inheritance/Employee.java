@@ -1,4 +1,4 @@
-package fpp.classworks.lesson5.oop;
+package fpp.classworks.lesson5.oop.inheritance;
 
 import java.time.LocalDate;
 

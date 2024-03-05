@@ -1,6 +1,4 @@
-package codesignal;
-
-import java.util.ArrayList;
+package codesignal.intro;
 
 public class Palindrome {
     static boolean solution(String inputString) {
