@@ -4,6 +4,7 @@ public class MyClass implements MyInterface {
 
     @Override
     public void myAbstractMethod() {
+        MyInterface.staticMethodInInterface();
         System.out.println("Implemented abstract method.");
         defaultMethodInInterface();
     }

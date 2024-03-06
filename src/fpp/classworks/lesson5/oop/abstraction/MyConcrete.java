@@ -11,6 +11,7 @@ public class MyConcrete extends MyAbstract {
     }
 
     public static void main(String[] args) {
+        MyAbstract.staticMethod();
         MyConcrete.staticMethod();
 
         MyConcrete c = new MyConcrete(12);
