@@ -4,10 +4,12 @@ import fpp.classworks.lesson6.nested.comparatorExample.Person;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.function.BiConsumer;
 
 public class PersonDataAnon {
 
     public static void main(String[] args) {
+
         Person[] persons = Person.prepareData();
         Arrays.sort(persons, new Comparator<Person>() {
             @Override

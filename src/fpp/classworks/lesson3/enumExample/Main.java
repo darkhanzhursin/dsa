@@ -8,6 +8,7 @@ public class Main {
         }
 
         for (Size size : Size.values()) {
+            System.out.println();
             System.out.println(size);
         }
 

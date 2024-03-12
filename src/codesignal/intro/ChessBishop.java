@@ -1,6 +1,6 @@
 package codesignal.intro;
 
-public class BishopChess {
+public class ChessBishop {
     public static void main(String[] args) {
         String bishop1 = "d3";
         String pawn1 = "a6";

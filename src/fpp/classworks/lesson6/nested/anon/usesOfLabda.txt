@@ -1,0 +1,15 @@
+We can use lambda expression only for functional interfaces
+
+1. Abstract method doesn't have any parameter
+() -> System.out.println("lambda");
+
+2. Abstract method has one parameter
+x -> System.out.println(x);
+
+3. Abstract method has multiple parameters
+(x, y) -> System.out.println(x + y);
+
+4. Methodbody has multiple lines of code
+() -> { int x = 10;
+        int y = 20;
+        System.out.println(x + y); }
