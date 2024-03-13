@@ -18,9 +18,7 @@ public class ValidParentheses {
                         (c == ')' && top != '(') ||
                         (c == '}' && top != '{') ||
                         (c == ']' && top != '[')
-                ) {
-                    return false;
-                }
+                ) return false;
             }
         }
         return stack.isEmpty();

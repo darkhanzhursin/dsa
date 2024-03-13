@@ -1,4 +1,4 @@
-package fpp.classworks.lesson8;
+package fpp.classworks.lesson8.linkedList;
 
 public class MyDoublyLinkedList {
 
