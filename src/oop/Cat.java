@@ -12,4 +12,9 @@ class Cat extends Animal {
     public void makeSound() {
         System.out.println("Meow!");
     }
+
+    @Override
+    public String toString() {
+        return "Cat";
+    }
 }

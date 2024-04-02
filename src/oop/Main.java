@@ -10,6 +10,7 @@ public class Main {
         // Iterate through the array and call makeSound() method
         for (Animal animal : animals) {
             animal.makeSound();
+            System.out.println(animal);
         }
     }
 }
