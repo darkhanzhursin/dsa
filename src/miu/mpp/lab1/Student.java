@@ -19,13 +19,15 @@ public class Student extends Person {
     }
 
     public int getTotalUnits() {
-        int sum = 0;
-        if (!courseList.isEmpty()) {
-            for (Course course : courseList) {
-                sum += course.getUnits();
-            }
-        }
-        return sum;
+        return courseList.stream().mapToInt(Course::getUnits).sum();
+    }
+
+    public double getGpa() {
+        return gpa;
+    }
+
+    public void setGpa(double gpa) {
+        this.gpa = gpa;
     }
 
     @Override

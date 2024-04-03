@@ -5,11 +5,10 @@ import java.util.List;
 
 public class Faculty extends Person {
 
-    private double salary;
     List<Course> courseList;
     public Faculty(String name, String phone, int age, double salary) {
         super(name, phone, age);
-        this.salary = salary;
+        super.setSalary(salary);
         courseList = new ArrayList<>();
     }
 
@@ -18,21 +17,15 @@ public class Faculty extends Person {
     }
 
     public int getTotalUnits() {
-        int sum = 0;
-        if (!courseList.isEmpty()) {
-            for (Course course : courseList) {
-                sum += course.getUnits();
-            }
-        }
-        return sum;
+        return courseList.stream().mapToInt(Course::getUnits).sum();
     }
 
     public double getSalary() {
-        return salary;
+        return super.getSalary();
     }
 
     public void setSalary(double salary) {
-        this.salary = salary;
+        super.setSalary(salary);
     }
 
     @Override

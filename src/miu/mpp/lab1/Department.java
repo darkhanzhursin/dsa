@@ -14,16 +14,16 @@ public class Department {
 
     public double getTotalSalary() {
         double totalSalary = 0.0;
-        for (Person person : personList) {
-            if (person instanceof Staff) {
-                totalSalary += person.getSalary();
-            } else if (person instanceof Faculty) {
-                totalSalary += person.getSalary();
-            }
-        }
 //        for (Person person : personList) {
-//            totalSalary += person.getSalary();
+//            if (person instanceof Staff) {
+//                totalSalary += person.getSalary();
+//            } else if (person instanceof Faculty) {
+//                totalSalary += person.getSalary();
+//            }
 //        }
+        for (Person person : personList) {
+            totalSalary += person.getSalary();
+        }
         return totalSalary;
     }
 
@@ -54,7 +54,6 @@ public class Department {
             }
         }
     }
-
 
     public void addPerson(Person person) {
         personList.add(person);

@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class DepartmentApplication {
 
@@ -34,6 +33,11 @@ public class DepartmentApplication {
         Staff frankGore = new Staff("Frank Gore", "472-3321", 33, 4050);
         Staff adamDavis = new Staff("Adam Davis", "472-7552", 50, 5500);
         Staff davidHeck = new Staff("David Heck", "472-8890", 29, 3600);
+
+        // StaffStudent
+        StaffStudent staffStudentJohnWick = new StaffStudent("John Wick", "472-6029", 39, 3.40, 6000.0);
+        dept.addPerson(staffStudentJohnWick);
+
         dept.addPerson(frankGore);
         dept.addPerson(adamDavis);
         dept.addPerson(davidHeck);
@@ -47,17 +51,16 @@ public class DepartmentApplication {
         Course cs450 = new Course("cs450", "Advanced architecture", 5, frankMoore);
 
         // Students
-        johnDoe.addCourse(cs201);
-        johnDoe.addCourse(cs360);
-        johnDoe.addCourse(cs404);
-        johnDoe.addCourse(cs301);
-        maryJones.addCourse(cs201);
-        maryJones.addCourse(cs404);
-        maryJones.addCourse(cs450);
-        leeJohnson.addCourse(cs201);
-        leeJohnson.addCourse(cs360);
-        leeJohnson.addCourse(cs240);
-        leeJohnson.addCourse(cs450);
+        List<Course> johnsCourses = List.of(cs201, cs360, cs404, cs301);
+        johnsCourses.forEach(c -> johnDoe.addCourse(c));
+        List<Course> marysCourses = List.of(cs201, cs404, cs450);
+        marysCourses.forEach(c -> maryJones.addCourse(c));
+        List<Course> leesCourses = List.of(cs201, cs360, cs240, cs450);
+        leesCourses.forEach(c -> leeJohnson.addCourse(c));
+
+        // StaffStudent
+        List<Course> wicksCourses = List.of(cs201, cs360, cs450);
+        wicksCourses.forEach(c -> staffStudentJohnWick.addCourse(c));
 
         // Faculty
         johnDoodle.addCourse(cs201);
@@ -71,6 +74,7 @@ public class DepartmentApplication {
         studentList.add(johnDoe);
         studentList.add(maryJones);
         studentList.add(leeJohnson);
+        studentList.add(staffStudentJohnWick.getStudent());
 
         double totsalary = 0;
         while (true) {
@@ -119,7 +123,7 @@ public class DepartmentApplication {
     static void printStudents(List<Student> studentList, Faculty member) {
         for (Student student : studentList) {
             List<Course> courses = student.courseList.stream().filter(c -> c.getFaculty().equals(member))
-                    .collect(Collectors.toList());
+                    .toList();
             if (!courses.isEmpty()) System.out.println(student.getName());
         }
     }
@@ -131,8 +135,7 @@ public class DepartmentApplication {
     public static String getString() throws IOException {
         InputStreamReader isr = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(isr);
-        String s = br.readLine();
-        return s;
+        return br.readLine();
     }
 
     public static char getChar() throws IOException {
