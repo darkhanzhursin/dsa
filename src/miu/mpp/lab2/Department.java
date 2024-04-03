@@ -66,5 +66,11 @@ public class Department {
     }
 
     public void  printReportingHierarchy() {
+        Position head = getDepartmentHead();
+        System.out.println(head.getTitle());
+    }
+
+    public Position getDepartmentHead() {
+        return positions.stream().filter(p -> p.getTitle().equals(Position.HEAD)).findFirst().get();
     }
 }

@@ -1,5 +1,7 @@
 package miu.mpp.lab2;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Position {
@@ -7,11 +9,31 @@ public class Position {
     private String description;
     private Employee employee;
     private Department department;
+    private List<Position> inferiors;
+    private Position superior;
+
+    public static final String HEAD = "Head";
+    public static final String TOP_EXECUTIVE = "Top Executive";
 
     public Position(String title, String description, Department department) {
         this.title = title;
         this.description = description;
         this.department = department;
+        this.inferiors = new ArrayList<>();
+    }
+
+    public Position(String title, String description) {
+        this.title = title;
+        this.description = description;
+        this.inferiors = new ArrayList<>();
+    }
+
+    public Position getSuperior() {
+        return superior;
+    }
+
+    public void setSuperior(Position superior) {
+        this.superior = superior;
     }
 
     public Department getDepartment() {
@@ -48,6 +70,7 @@ public class Position {
 
     public void print() {
         System.out.println();
+        if (hasSuperior()) System.out.println("Superior: " + superior.employee.getFirstName());
         System.out.println("Position: " + title);
         System.out.println("Description: " + description);
         if (Objects.nonNull(employee)) employee.print();
@@ -60,8 +83,19 @@ public class Position {
     }
 
     public void printDownLine() {
-
+        print();
+        if (Objects.nonNull(inferiors)) {
+            for (Position position : inferiors) {
+                position.printDownLine();
+            }
+        }
     }
 
+    public boolean hasSuperior() {
+        return Objects.nonNull(superior);
+    }
 
+    public void addInferior(Position inferior) {
+        inferiors.add(inferior);
+    }
 }

@@ -2,6 +2,7 @@ package miu.mpp.lab2;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Company {
     private String name;
@@ -37,8 +38,12 @@ public class Company {
     }
 
     public Position getTopExecutive() {
-        return null;
+        Department dept = departments.stream().filter(d -> Objects.nonNull(d.getDepartmentHead())).findAny().get();
+        return dept.getDepartmentHead().getSuperior();
     }
 
-    public void printReportingHierarchy() {}
+    public void printReportingHierarchy() {
+        Position top = getTopExecutive();
+        top.printDownLine();
+    }
 }
