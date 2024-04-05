@@ -22,8 +22,19 @@ public class PostApp {
         Map<String, Map<Double, String>> result = new HashMap<>();
         while (true) {
             putText("Please, enter number of packages: ");
-            int packages = getInt();
-            processPackages(packages, result);
+            int packages;
+            try {
+                 packages = getInt();
+            } catch (NumberFormatException ex) {
+                System.err.println("Must be a number! " + ex.getMessage());
+                return;
+            }
+            try {
+                processPackages(packages, result);
+            } catch (NumberFormatException ex) {
+                System.err.println("There is an error occurred: " + ex.getMessage());
+                return;
+            }
             putText("Enter q to exit: ");
             char exit = getChar();
             if (exit == 'q') return;
@@ -37,7 +48,7 @@ public class PostApp {
             putText("Enter description for package " + n + ": ");
             String desc = getString();
             putText("Enter the weight: ");
-            double weight = Double.parseDouble(getString());
+            double weight = getDouble();
             putText("Please, enter zone: ");
             String zone = getString();
             ACustomer aCustomer = getCustomer();
@@ -67,24 +78,41 @@ public class PostApp {
         return new Person(name, age);
     }
 
-    public static void putText(String s) {
+    private static void putText(String s) {
         System.out.println(s);
     }
 
-    public static String getString() throws IOException {
+    private static String getString() throws IOException {
         InputStreamReader isr = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(isr);
         return br.readLine();
     }
 
-    public static char getChar() throws IOException {
+    private static char getChar() throws IOException {
         String s = getString();
         return s.charAt(0);
     }
 
-    public static int getInt() throws IOException {
+    private static int getInt() throws NumberFormatException, IOException {
+        int number;
         String s = getString();
-        return Integer.parseInt(s);
+        try {
+            number = Integer.parseInt(s);
+        } catch (NumberFormatException ex) {
+            throw new NumberFormatException("Input must be a valid integer.");
+        }
+        return number;
+    }
+
+    private static double getDouble() throws NumberFormatException, IOException {
+        double number;
+        String s = getString();
+        try {
+            number = Double.parseDouble(s);
+        } catch (NumberFormatException ex) {
+            throw new NumberFormatException("Input must be a valid integer.");
+        }
+        return number;
     }
 
 }
