@@ -1,12 +1,13 @@
 package miu.mpp.lab3;
 
-import miu.mpp.lab3.customer.ACustomer;
-import miu.mpp.lab3.customer.Person;
-import miu.mpp.lab3.customer.Senior;
-import miu.mpp.lab3.customer.Student;
-import miu.mpp.lab3.post.FedEx;
-import miu.mpp.lab3.post.UPS;
-import miu.mpp.lab3.post.USMail;
+import miu.mpp.lab3.customers.ACustomer;
+import miu.mpp.lab3.customers.Person;
+import miu.mpp.lab3.customers.Senior;
+import miu.mpp.lab3.customers.Student;
+import miu.mpp.lab3.postServices.FedEx;
+import miu.mpp.lab3.postServices.IService;
+import miu.mpp.lab3.postServices.UPS;
+import miu.mpp.lab3.postServices.USMail;
 
 import java.io.BufferedReader;
 import java.io.IOException;

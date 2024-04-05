@@ -1,4 +1,4 @@
-package miu.mpp.lab3.customer;
+package miu.mpp.lab3.customers;
 
 public class Student extends ACustomer {
 

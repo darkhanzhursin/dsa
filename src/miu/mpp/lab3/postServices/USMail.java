@@ -1,6 +1,6 @@
-package miu.mpp.lab3.post;
+package miu.mpp.lab3.postServices;
 
-import miu.mpp.lab3.customer.ACustomer;
+import miu.mpp.lab3.customers.ACustomer;
 
 public class USMail extends PostService {
     private final double cost = 0.55;

@@ -1,7 +1,6 @@
-package miu.mpp.lab3.post;
+package miu.mpp.lab3.postServices;
 
-import miu.mpp.lab3.IService;
-import miu.mpp.lab3.customer.ACustomer;
+import miu.mpp.lab3.customers.ACustomer;
 
 public abstract class PostService implements IService {
     private double weight;
