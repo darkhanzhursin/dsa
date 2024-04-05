@@ -87,7 +87,6 @@ public class Application {
         salesAssociate.setEmployee(dan);
         sm.setEmployee(peter);
         mba.setEmployee(stan);
-        //dev.setEmployee(ron);
         pm.setEmployee(gary);
         headOfMarketing.setEmployee(anne);
         headOfSales.setEmployee(ron);
