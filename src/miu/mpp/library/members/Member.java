@@ -55,15 +55,17 @@ public class Member implements IMember {
         this.phone = phone;
     }
 
-    public void addReservation(Reservation reservation) {
-        reservationList.add(reservation);
+    public void reserve(Reservation reservation) {
+        if (reservation.checkAvailability()) reservationList.add(reservation);
+        else System.out.println("Item is not available");
     }
-
-    public void addLoan(Loan loan) {
+    public void borrow(Loan loan) {
+        System.out.println("Check out date is: " + loan.getCheckoutDate());
         loanList.add(loan);
+        System.out.println("Return date is: " + loan.getReturnDate());
     }
-
-    public void reserve() {}
-    public void borrow() {}
-    public void returnItem() {}
+    public void returnItem(Loan loan) {
+        loan.getItemCopy().setAvailability(true);
+        System.out.println("Returned");
+    }
 }

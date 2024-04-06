@@ -13,7 +13,7 @@ public class Department {
     }
 
     public double getTotalSalary() {
-        double totalSalary = 0.0;
+//        double totalSalary = 0.0;
 //        for (Person person : personList) {
 //            if (person instanceof Staff) {
 //                totalSalary += person.getSalary();
@@ -21,10 +21,10 @@ public class Department {
 //                totalSalary += person.getSalary();
 //            }
 //        }
-        for (Person person : personList) {
-            totalSalary += person.getSalary();
-        }
-        return totalSalary;
+//        for (Person person : personList) {
+//            totalSalary += person.getSalary();
+//        }
+        return personList.stream().mapToDouble(Person::getSalary).sum();
     }
 
     public void showAllMembers() {

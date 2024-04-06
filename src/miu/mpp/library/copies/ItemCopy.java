@@ -45,4 +45,9 @@ public class ItemCopy implements IItemCopy {
     public void setLoan(Loan loan) {
         this.loan = loan;
     }
+
+    @Override
+    public void setAvailability(Boolean bool) {
+        this.isAvailable = bool;
+    }
 }
