@@ -25,7 +25,8 @@ public class Commissioned extends Employee {
 
     @Override
     public double calcGrossPay(DateRange dateRange) {
-        double bonus = orders.stream().mapToDouble(Order::getPrice).sum();
-        return baseSalary + bonus * (commission / 100);
+        double sold = orders.stream().filter(o -> dateRange.isInRange(o.getOrderDate()))
+                .mapToDouble(Order::getPrice).sum();
+        return baseSalary + sold * (commission / 100);
     }
 }

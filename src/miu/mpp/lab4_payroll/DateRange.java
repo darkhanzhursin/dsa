@@ -12,8 +12,8 @@ public class DateRange {
         this.endDate = endDate;
     }
 
-    private boolean isInRange(LocalDate date) {
-        return false;
+    public boolean isInRange(LocalDate date) {
+        return startDate.compareTo(date) < 0 && endDate.compareTo(date) > 0;
     }
 
     @Override

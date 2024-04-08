@@ -11,7 +11,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         Order order1 = new Order("01", LocalDate.now(),2, 200);
-        Order order2 = new Order("02", LocalDate.now(), 1, 100);
+        Order order2 = new Order("02", LocalDate.of(2023, 1, 1), 1, 100);
         Commissioned benComm = new Commissioned(1, 7, 1000);
         benComm.addOrder(order1);
         benComm.addOrder(order2);
