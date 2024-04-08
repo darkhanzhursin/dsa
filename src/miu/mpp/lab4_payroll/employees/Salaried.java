@@ -1,7 +1,6 @@
 package miu.mpp.lab4_payroll.employees;
 
 import miu.mpp.lab4_payroll.DateRange;
-import miu.mpp.lab4_payroll.employees.Employee;
 
 public class Salaried extends Employee {
     private double salary;

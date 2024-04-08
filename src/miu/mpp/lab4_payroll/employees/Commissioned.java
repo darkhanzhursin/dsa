@@ -2,7 +2,6 @@ package miu.mpp.lab4_payroll.employees;
 
 import miu.mpp.lab4_payroll.DateRange;
 import miu.mpp.lab4_payroll.Order;
-import miu.mpp.lab4_payroll.Paycheck;
 
 import java.util.ArrayList;
 import java.util.List;

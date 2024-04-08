@@ -30,7 +30,7 @@ public class Paycheck {
         //System.out.println(employee.toString() +  " " + getNetPay());
         System.out.printf("$%,.2f %-10s\n", getNetPay(), employee);
     }
-    public double getNetPay() {
+    private double getNetPay() {
         double taxes = fica + state + local + medicare + socialSecurity;
         return grossPay * (1 - taxes/100);
     }
