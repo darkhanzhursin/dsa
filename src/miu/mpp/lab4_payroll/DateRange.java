@@ -13,7 +13,23 @@ public class DateRange {
     }
 
     public boolean isInRange(LocalDate date) {
-        return startDate.compareTo(date) < 0 && endDate.compareTo(date) > 0;
+        return !startDate.isAfter(date) && !endDate.isBefore(date);
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
     }
 
     @Override
