@@ -28,7 +28,7 @@ public class Paycheck {
 
     public void print() {
         //System.out.println(employee.toString() +  " " + getNetPay());
-        System.out.printf("$%,.2f %-10s\n", getNetPay(), employee);
+        System.out.printf("Net salary for %s is $%,.2f\n", employee, getNetPay());
     }
     private double getNetPay() {
         double taxes = fica + state + local + medicare + socialSecurity;

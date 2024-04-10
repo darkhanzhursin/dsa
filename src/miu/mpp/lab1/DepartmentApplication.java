@@ -52,15 +52,15 @@ public class DepartmentApplication {
 
         // Students
         List<Course> johnsCourses = List.of(cs201, cs360, cs404, cs301);
-        johnsCourses.forEach(c -> johnDoe.addCourse(c));
+        johnsCourses.forEach(johnDoe::addCourse);
         List<Course> marysCourses = List.of(cs201, cs404, cs450);
-        marysCourses.forEach(c -> maryJones.addCourse(c));
+        marysCourses.forEach(maryJones::addCourse);
         List<Course> leesCourses = List.of(cs201, cs360, cs240, cs450);
-        leesCourses.forEach(c -> leeJohnson.addCourse(c));
+        leesCourses.forEach(leeJohnson::addCourse);
 
         // StaffStudent
         List<Course> wicksCourses = List.of(cs201, cs360, cs450);
-        wicksCourses.forEach(c -> staffStudentJohnWick.addCourse(c));
+        wicksCourses.forEach(staffStudentJohnWick::addCourse);
 
         // Faculty
         johnDoodle.addCourse(cs201);
@@ -80,8 +80,8 @@ public class DepartmentApplication {
         while (true) {
             putText("For printing out the names of all students who take classes that are taught by " +
                     "faculty member enter fullname of faculty member: ");
-            String fullname = getString();
-            switch (fullname) {
+            String fullName = getString();
+            switch (fullName) {
                 case "Frank Moore":
                     printStudents(studentList, frankMoore);
                     break;
