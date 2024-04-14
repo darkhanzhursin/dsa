@@ -3,22 +3,16 @@ package miu.mpp.lab9_attendee;
 import miu.mpp.lab9_attendee.attendees.IAttendee;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class Conference {
     private String name;
-    private double fullConferenceFee;
+    private final double fullConferenceFee = 4000;
 
     List<IAttendee> attendeeList;
 
-//    public Conference(String name, double fullConferenceFee) {
-//        this.name = name;
-//        this.fullConferenceFee = fullConferenceFee;
-//        this.attendeeList = new ArrayList<>();
-//    }
-
-    public Conference() {
+    public Conference(String name) {
+        this.name = name;
         this.attendeeList = new ArrayList<>();
     }
 
