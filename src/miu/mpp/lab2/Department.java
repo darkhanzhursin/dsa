@@ -2,8 +2,9 @@ package miu.mpp.lab2;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-public class Department {
+public class Department implements Cloneable {
     private String name;
     private String location;
 
@@ -55,7 +56,7 @@ public class Department {
 
     public void print() {
         System.out.println();
-        System.out.println("Department: " + name);
+        System.out.println(this);
         for (Position position : positions) {
             position.print();
         }
@@ -72,5 +73,40 @@ public class Department {
 
     public Position getDepartmentHead() {
         return positions.stream().filter(p -> p.getTitle().equals(Position.HEAD)).findFirst().get();
+    }
+
+    @Override
+    public String toString() {
+        return "Department{" +
+                "name='" + name + '\'' +
+                ", location='" + location + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Department that = (Department) o;
+
+        if (!Objects.equals(name, that.name)) return false;
+        if (!Objects.equals(location, that.location)) return false;
+        if (!Objects.equals(positions, that.positions)) return false;
+        return Objects.equals(company, that.company);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, location, company);
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        Department cloned = (Department) super.clone();
+        List<Position> positions = new ArrayList<>();
+        for (Position p : this.positions) positions.add(p);
+        cloned.setPositions(positions);
+        return cloned;
     }
 }

@@ -1,10 +1,11 @@
 package miu.mpp.lab2;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
-public class Position {
+public class Position implements Cloneable {
     private String title;
     private String description;
     private Employee employee;
@@ -68,11 +69,18 @@ public class Position {
         this.employee = employee;
     }
 
+    public void setInferiors(List<Position> inferiors) {
+        this.inferiors = inferiors;
+    }
+
+    public List<Position> getInferiors() {
+        return inferiors;
+    }
+
     public void print() {
         System.out.println();
         if (hasSuperior()) System.out.println("Superior: " + superior.employee.getFirstName());
-        System.out.println("Position: " + title);
-        System.out.println("Description: " + description);
+        System.out.println(this);
         if (Objects.nonNull(employee)) employee.print();
         else System.out.println("This position is still open.");
     }
@@ -97,5 +105,47 @@ public class Position {
 
     public void addInferior(Position inferior) {
         inferiors.add(inferior);
+    }
+
+    @Override
+    public String toString() {
+        return "Position{" +
+                "title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Position position = (Position) o;
+
+        if (!title.equals(position.title)) return false;
+        if (!description.equals(position.description)) return false;
+        if (!Objects.equals(employee, position.employee)) return false;
+        if (!Objects.equals(department, position.department)) return false;
+        if (!Objects.equals(inferiors, position.inferiors)) return false;
+        return Objects.equals(superior, position.superior);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(title, description, employee);
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        Object obj = super.clone();
+        Position cloned = (Position) obj;
+        List<Position> positions = new ArrayList<>();
+        Iterator<Position> it = this.inferiors.iterator();
+        while (it.hasNext()) {
+            positions.add(it.next());
+        }
+        cloned.setInferiors(positions);
+
+        return cloned;
     }
 }

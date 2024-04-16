@@ -4,13 +4,16 @@ import java.util.List;
 
 public class Application {
     static int counterId;
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CloneNotSupportedException {
         Company microsoft = new Company("Microsoft");
 
         Department salesDpt = new Department("Corporate Sales", "Birmingham, AL, USA", microsoft);
+        Department otherSalesDpt = new Department("Corporate Sales", "Birmingham, AL, USA", microsoft);
         Department marketingDpt = new Department("Marketing Center", "Atlanta, GA, USA", microsoft);
 
         Position topExecutive = new Position(Position.TOP_EXECUTIVE, "Responsible for company's success.");
+        Position sameTopExec = new Position(Position.TOP_EXECUTIVE, "Responsible for company's success.");
+        Position otherTopExec = new Position(Position.TOP_EXECUTIVE, "Responsible for company's success.");
         // Sales
         Position sm = new Position("Sales Manager", "Good at sales", salesDpt);
         Position mba = new Position("MBA Manager", "Good at operates", salesDpt);
@@ -45,6 +48,7 @@ public class Application {
         // Inferiors
         List<Position> heads = List.of(headOfSales, headOfMarketing);
         subdue(heads, topExecutive); // Ron, Anne -> Lyle
+        subdue(heads, sameTopExec);
         List<Position> marketingInferiors = List.of(dev, hr, pm);
         subdue(marketingInferiors, headOfMarketing); // Gary -> Anne
         List<Position> salesInferiors = List.of(sm, mba, acc);
@@ -79,26 +83,61 @@ public class Application {
 
         Employee lyle = new Employee(getId(), "Lyle", "I", "Green",
                 "22-08-1980", "2341-45-9938", 286000.0, topExecutive);
+        Employee sameLyle = new Employee(getId(), "Lyle", "I", "Green",
+                "22-08-1980", "2341-45-9938", 286000.0, topExecutive);
+        Employee otherLyle = new Employee(getId(), "Lyle", "I", "Green",
+                "22-08-1980", "2341-45-9939", 286000.0, topExecutive);
 
-        salesRep.setEmployee(tom);
-        salesAssist.setEmployee(sue);
-        salesTrainee.setEmployee(marc);
-        salesEngineer.setEmployee(bill);
-        salesAssociate.setEmployee(dan);
-        sm.setEmployee(peter);
-        mba.setEmployee(stan);
-        pm.setEmployee(gary);
-        headOfMarketing.setEmployee(anne);
-        headOfSales.setEmployee(ron);
-
-        topExecutive.setEmployee(lyle);
-
-        microsoft.addDepartment(salesDpt);
-        microsoft.addDepartment(marketingDpt);
+//        salesRep.setEmployee(tom);
+//        salesAssist.setEmployee(sue);
+//        salesTrainee.setEmployee(marc);
+//        salesEngineer.setEmployee(bill);
+//        salesAssociate.setEmployee(dan);
+//        sm.setEmployee(peter);
+//        mba.setEmployee(stan);
+//        pm.setEmployee(gary);
+//        headOfMarketing.setEmployee(anne);
+//        headOfSales.setEmployee(ron);
+//
+//        topExecutive.setEmployee(lyle);
+//
+//        microsoft.addDepartment(salesDpt);
+//        microsoft.addDepartment(marketingDpt);
 
         //microsoft.print();
-        microsoft.getSalary();
-        microsoft.printReportingHierarchy();
+//        microsoft.getSalary();
+//        microsoft.printReportingHierarchy();
+        System.out.println("Is Equal? " + lyle.equals(sameLyle));
+        System.out.println("Is Equal? " + lyle.equals(otherLyle));
+        System.out.println();
+        System.out.println("Is Equal? " + topExecutive.equals(sameTopExec));
+        boolean eq = topExecutive.hashCode() == sameTopExec.hashCode();
+        System.out.println("Are hash codes equal? " + eq);
+        System.out.println("Is Equal? " + topExecutive.equals(otherTopExec));
+        System.out.println();
+        System.out.println("Is Equal? " + salesDpt.equals(otherSalesDpt));
+        // Position Cloning Test
+        headOfSales.setEmployee(ron);
+        Position clonedHeadSales = (Position) headOfSales.clone();
+        System.out.println("headSales and clonedHeadSales == test: " + (clonedHeadSales == headOfSales));
+        System.out.println("headSales superior: " + headOfSales.getSuperior());
+        System.out.println("clonedHeadSales superior: " + clonedHeadSales.getSuperior());
+        clonedHeadSales.setSuperior(headOfMarketing);
+        System.out.println("headSales superior: " + headOfSales.getSuperior());
+        System.out.println("clonedHeadSales superior: " + clonedHeadSales.getSuperior());
+        clonedHeadSales.setEmployee(gary);
+        System.out.println(headOfSales.getEmployee());
+        System.out.println(clonedHeadSales.getEmployee());
+
+        // Department Cloning Test
+        Department clonedDept = (Department) salesDpt.clone();
+        System.out.println(clonedDept != salesDpt);
+        System.out.println(clonedDept.getCompany().equals(salesDpt.getCompany()));
+        clonedDept.setCompany(new Company("Apple"));
+        System.out.println(clonedDept.getCompany().equals(salesDpt.getCompany()));
+        System.out.println(clonedDept.getPositions().equals(salesDpt.getPositions()));
+        clonedDept.addPosition(new Position("test", "test"));
+        System.out.println(clonedDept.getPositions().equals(salesDpt.getPositions()));
     }
 
     static void subdue(List<Position> positions, Position position) {

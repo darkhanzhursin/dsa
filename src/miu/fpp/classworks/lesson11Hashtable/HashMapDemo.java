@@ -6,6 +6,7 @@ import java.util.Map;
 public class HashMapDemo {
     public static void main(String[] args) {
         HashMap<Integer, String> productMap = new HashMap<>();
+        productMap.put(null, null);
         productMap.put(1, "Keys");
         productMap.put(4, "Books");
         productMap.put(3, "Systems");
