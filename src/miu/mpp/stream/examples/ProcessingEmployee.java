@@ -133,5 +133,48 @@ public class ProcessingEmployee {
                         .mapToDouble(Employee::getSalary)
                         .average()
                         .getAsDouble());
+
+        // Count the number of last names that begin with the letter  ‘B’.  Print out this number.
+        System.out.printf("%nNumber of last names that begin with the letter  ‘B’: %d%n",
+                list.stream().filter(e -> e.getLastName().startsWith("B")).count());
+
+        // Print out all the Employee objects whose last name begins with the letter  ‘B’  in sorted order.
+        System.out.printf("%nEmployee objects whose last name begins with the letter  ‘B’  in sorted order: %n");
+        list.stream().filter(e -> e.getLastName().startsWith("B"))
+                .sorted(Comparator.comparing(Employee::getLastName)).forEach(System.out::println);
+
+        //  Print out all of the Employee objects whose last name begins with the letter  ‘B’  and
+        //  change their first name and last name to be All capital letters.
+
+        // doesn't change original list
+        System.out.printf("%nNames with capital letters: %n");
+        list.stream().filter(e -> e.getLastName().startsWith("B"))
+                        .map(e -> capitalize(e)).forEach(System.out::println);
+
+
+        // change original list
+//        list.stream().filter(e -> e.getLastName().startsWith("B"))
+//                .map(employee -> {
+//                    employee.setFirstName(employee.getFirstName().toUpperCase());
+//                    employee.setLastName(employee.getLastName().toUpperCase());
+//                    return employee;
+//                }).forEach(System.out::println);
+
+
+        // Print out All the employee objects, but if the last name begins with the letter  ‘B’,  then capitalize
+        // all the letters in the last name.
+        System.out.printf("%nNames with capital letters: %n");
+        list.stream().map(e -> capitalizeLast(e)).forEach(System.out::println);
+    }
+
+    static Employee capitalize(Employee e) {
+        return new Employee(e.getFirstName().toUpperCase(), e.getLastName().toUpperCase(), e.getSalary(),
+                e.getDepartment());
+    }
+
+    static Employee capitalizeLast(Employee e) {
+        if (!e.getLastName().startsWith("B")) return e;
+        return new Employee(e.getFirstName(), e.getLastName().toUpperCase(), e.getSalary(),
+                e.getDepartment());
     }
 }
