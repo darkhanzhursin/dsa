@@ -1,4 +1,4 @@
-package epam.stream;
+package miu.mpp.lab_11_stream.stream;
 
 public class Product {
     private int price;

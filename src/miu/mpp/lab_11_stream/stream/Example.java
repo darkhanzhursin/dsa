@@ -1,4 +1,4 @@
-package epam.stream;
+package miu.mpp.lab_11_stream.stream;
 
 import java.io.IOException;
 import java.nio.charset.Charset;

@@ -1,12 +1,9 @@
-package miu.mpp.stream.examples;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+package miu.mpp.lab_11_stream;
+import java.util.*;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ProcessingEmployee {
     public static void main(String[] args) {
@@ -18,7 +15,9 @@ public class ProcessingEmployee {
                 new Employee("James", "Indigo", 4700.77, "Marketing"),
                 new Employee("Luke", "Indigo", 6200, "IT"),
                 new Employee("Jason", "Blue", 3200, "Sales"),
-                new Employee("Wendy", "Brown", 4236.4, "Marketing")};
+                new Employee("Wendy", "Brown", 4236.4, "Marketing"),
+                new Employee("Asan", "Isen", 5436.2, "IT")
+        };
 
         // get List view of the Employees
         List<Employee> list = Arrays.asList(employees);
@@ -95,7 +94,11 @@ public class ProcessingEmployee {
         groupedByDepartment.forEach(
                 (department, employeesInDepartment) ->
                 {
-                    System.out.println(department);
+                    DoubleSummaryStatistics summary = employeesInDepartment.stream()
+                            .collect(Collectors.summarizingDouble(Employee::getSalary));
+
+                    System.out.printf("%n%s - Average salary: %s Maximum salary: %s%n",
+                            department, summary.getAverage(), summary.getMax());
                     employeesInDepartment.forEach(
                             employee -> System.out.printf("   %s%n", employee));
                 }
@@ -163,8 +166,42 @@ public class ProcessingEmployee {
 
         // Print out All the employee objects, but if the last name begins with the letter  ‘B’,  then capitalize
         // all the letters in the last name.
-        System.out.printf("%nNames with capital letters: %n");
-        list.stream().map(e -> capitalizeLast(e)).forEach(System.out::println);
+        System.out.printf("%nLast names starts with 'B' capitalized #1: %n%s%n",
+                list.stream().map(e -> capitalizeLast(e)).map(Employee::toString)
+                        .collect(Collectors.joining(", ")));
+
+        System.out.printf("%nLast names starts with 'B' capitalized #2: %n---%s%n",
+                list.stream().map(e -> capitalizeLast(e)).map(Employee::toString)
+                                .collect(Collectors.joining("---\n---")));
+
+        // Print out all the Employee objects’ last names, whose last name begins with the letter  ‘I’  in sorted
+        // order, and get rid of all the duplicates.  Print out only the last names.
+        System.out.printf("%nPrint out only last names started with 'I': %s%n",
+                list.stream().filter(e -> e.getLastName().startsWith("I"))
+                        .map(e -> e.getLastName()).distinct().toList());
+
+        // Print out the average of all the salaries.
+        System.out.printf("Average salary: %s",
+                list.stream().collect(Collectors.summarizingDouble(Employee::getSalary)).getAverage());
+
+        // Use the  ‘reduce’  method to print out the total salary of all employees.
+        System.out.printf("%nTotal salary: %s",
+                list.stream().map(e -> e.getSalary()).toList().stream().reduce((s1, s2) -> s1 + s2).orElse(0.0));
+
+        // Print out only the first names of all the employees.  Use the  ‘map’  method to accomplish this.
+        System.out.printf("%nOnly first names: %s",
+                list.stream().map(e -> e.getFirstName()).toList());
+
+        // Create an infinite stream of even numbers (0, 2, 4, …) and then, eventually print out only the first 20
+        // even numbers from this stream.
+        System.out.printf("%nFirst 20 even numbers: %s%n",
+                Stream.iterate(0, n -> n + 2).limit(20).toList());
+
+        Stream<String> strings = Stream.of("A", "good", "day", "to", "write", "some", "Java");
+        System.out.printf("%nConcatenated: %s%n",
+                strings.reduce("", (str1, str2) -> str1.isEmpty() ? str2 : str1 + " " + str2));
+
+        System.out.println(countWords(List.of("apple", "banana", "cherry", "date", "fig", "arbuz"), 'a', 'e', 5));
     }
 
     static Employee capitalize(Employee e) {
@@ -176,5 +213,15 @@ public class ProcessingEmployee {
         if (!e.getLastName().startsWith("B")) return e;
         return new Employee(e.getFirstName(), e.getLastName().toUpperCase(), e.getSalary(),
                 e.getDepartment());
+    }
+
+    static int countWords(List<String> words, char c, char d, int len) {
+        long l = words.stream()
+                .filter(w -> w.length() == len)
+                .filter(w -> w.contains(String.valueOf(c)))
+                .filter(w -> !w.contains(String.valueOf(d)))
+                .count();
+
+        return (int) l;
     }
 }

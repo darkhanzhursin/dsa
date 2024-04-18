@@ -1,4 +1,4 @@
-package miu.mpp.stream.examples;
+package miu.mpp.lab_11_stream;
 
 public class Employee {
     private String firstName;
