@@ -147,4 +147,11 @@ public class Example {
 
     IntStream intStreamSequential = intStreamParallel.sequential();
     boolean isParallel3 = intStreamSequential.isParallel();
+
+    public static void main(String[] args) {
+        int[] nums = {1,2,3,4};
+        int n = Arrays.stream(nums).reduce(1, (n1, n2) -> n1 * n2);
+        System.out.println(n);
+    }
+
 }
