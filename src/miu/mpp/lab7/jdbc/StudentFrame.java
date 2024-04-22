@@ -137,10 +137,10 @@ public class StudentFrame extends JFrame {
 
         // load data from the database!!
 
-        dbconnection dbconnect = new dbconnection();
-        dbconnect.Connect();
+        DBConnection dbconnect = new DBConnection();
+        dbconnect.connect();
         ResultSet rs;
-        rs = dbconnect.DoQuery("Select * from StudentInfo");
+        rs = dbconnect.doQuery("Select * from StudentInfo");
 
         try {
             while (rs.next()) {
@@ -151,7 +151,7 @@ public class StudentFrame extends JFrame {
         } catch (SQLException ex) {
             System.err.println("error in database connection");
         }
-        dbconnect.Close();  //close database connection
+        dbconnect.close();  //close database connection
     }
 
     void Bshowselection_actionPerformed(ActionEvent event) {
