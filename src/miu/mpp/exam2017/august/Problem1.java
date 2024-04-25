@@ -26,7 +26,6 @@ public class Problem1 {
 				.toList();
 	}
 	
-	
 	//test methods
 	public static void main(String[] args) {
 		testFirstMethod();

@@ -202,6 +202,15 @@ public class ProcessingEmployee {
                 strings.reduce("", (str1, str2) -> str1.isEmpty() ? str2 : str1 + " " + str2));
 
         System.out.println(countWords(List.of("apple", "banana", "cherry", "date", "fig", "arbuz"), 'a', 'e', 5));
+
+        //key = id, value = name
+//        Map<Integer, String> idToName
+//                = people.collect(Collectors.toMap(Person::getId, Person::getName));
+
+        //key = id, value = the person object
+        Map<String, Employee> nameToPerson
+                = list.stream().collect(Collectors.toMap(Employee::getName, Function.identity()));
+
     }
 
     static Employee capitalize(Employee e) {

@@ -1,11 +1,32 @@
 package miu.mpp.stream.examples;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class IntStreamOperations {
 
     public static void main(String[] args) {
         int[] values = {3, 10, 6, 1, 4, 8, 2, 5, 9, 7};
+
+        List<Integer> ints = Arrays.asList(3, 5, 2, 3, 8);
+        List<int[]> intArrs = ints.stream().map(int[]::new).toList();
+        List<String> intArrsStr = intArrs.stream().map(Arrays::toString).toList();
+        System.out.println(intArrsStr);
+        Stream.iterate(1, n -> n + 1).limit(10).forEach(System.out::println);
+
+        int max = ints.stream().mapToInt(Integer::intValue).max().getAsInt();
+
+        String[] strsArr = Stream.of("Eleven", "strike", "the", "clock").toArray(String[]::new);
+        System.out.println(Arrays.toString(strsArr));
+
+        List<String> stringList = Arrays.asList("Joe", "Tom", "Abe");
+        Stream<Stream<Character>> res = stringList.stream().map(s -> characterStream(s));
+        Stream<Character> flatRes = stringList.stream().flatMap(s -> characterStream(s));
 
         // display original values
         System.out.print("Original values: ");
@@ -57,5 +78,13 @@ public class IntStreamOperations {
         // sum range of integers from 1 to 10, inclusive
         System.out.printf("Sum of integers from 1 to 10: %d%n",
                 IntStream.rangeClosed(1, 10).sum());
+    }
+
+    static Stream<Character> characterStream(String s) {
+        List<Character> characterList = new ArrayList<>();
+        for (char c : s.toCharArray()) {
+            characterList.add(c);
+        }
+        return characterList.stream();
     }
 }

@@ -9,8 +9,8 @@ public class PrimeThread extends Thread {
     public void run() {
  // compute primes larger than minPrime
     	
-        System.out.println("Inside run  ");      
-    	
-         //  . . .
+        System.out.println("Inside run  ");
     }
+
+
 }
