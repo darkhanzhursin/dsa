@@ -2,7 +2,7 @@ package patterns.creational.builder;
 
 import patterns.creational.builder.model.Builder;
 
-public class Director {
+public class  Director {
 
     public void buildBugatti(Builder builder) {
         builder.brand("Bugatti")
