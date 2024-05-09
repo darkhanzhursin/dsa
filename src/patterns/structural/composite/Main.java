@@ -21,6 +21,6 @@ public class Main {
                         new VideoGame("5", 500)
                 )
         );
-        System.out.println(deliveryService.calculateOrderPrice());
+        System.out.println(deliveryService.calculateOrderPrice() );
     }
 }
