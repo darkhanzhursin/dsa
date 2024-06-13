@@ -1,4 +1,4 @@
-package algos.coursera.week1;
+package algos.coursera.week1.quickUnion;
 
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;

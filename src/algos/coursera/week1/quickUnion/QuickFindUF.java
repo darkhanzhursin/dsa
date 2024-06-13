@@ -1,4 +1,4 @@
-package algos.coursera.week1;
+package algos.coursera.week1.quickUnion;
 
 // Quick find is too slow
 // It takes quadratic - pow(N, 2) array accesses to process a sequence of

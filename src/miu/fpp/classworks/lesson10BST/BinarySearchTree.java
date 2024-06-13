@@ -7,12 +7,14 @@ public class BinarySearchTree {
         root = new TreeNode(val);
     }
 
+    public BinarySearchTree(){}
+
     static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
 
-        public TreeNode(int val) {
+        public TreeNode(Integer val) {
             this.val = val;
         }
 
@@ -46,7 +48,23 @@ public class BinarySearchTree {
         }
     }
 
-    private TreeNode insertRec(TreeNode node, int val) {
+    public void insertFromArr(Integer val) {
+        if (root == null) {
+            root = new TreeNode(val);
+        } else {
+           insertRec(root, val);
+        }
+    }
+
+//    private TreeNode insert2(TreeNode node, Integer val) {
+//        if (node == null) return new TreeNode(val);
+//        if (val == 1 || val == 0) node.left = new TreeNode(val);
+//        else if (val == 2 || val == 3) node.right = insert2(node.right, val);
+//        return node;
+//    }
+
+    private TreeNode insertRec(TreeNode node, Integer val) {
+        if (val == null) {return null;}
         if (node == null) {
             return new TreeNode(val);
         }
@@ -128,4 +146,20 @@ public class BinarySearchTree {
                 "root=" + root.val +
                 '}';
     }
+
+    public boolean evaluateTree(TreeNode root) {
+        return helper(root);
+    }
+
+    private boolean helper(TreeNode root) {
+        if (root.val == 0 || root.val == 1) {
+            return root.val == 1;
+        } else if (root.val == 2) {
+            return helper(root.left) || helper(root.right);
+        } else if (root.val == 3) {
+            return helper(root.left) && helper(root.right);
+        }
+        return false;
+    }
+
 }

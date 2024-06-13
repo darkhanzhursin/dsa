@@ -1,4 +1,6 @@
-package algos.coursera.week1;
+package algos.coursera.week1.quickUnion;
+
+import org.junit.rules.Stopwatch;
 
 public class WeightedQuickUnion {
 

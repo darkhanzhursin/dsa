@@ -1,5 +1,7 @@
 package patterns.structural.proxy;
 
+import patterns.structural.proxy.aop.ProxySubject;
+import patterns.structural.proxy.aop.Subject;
 import patterns.structural.proxy.internet.Internet;
 import patterns.structural.proxy.internet.ProxyInternet;
 import patterns.structural.proxy.video.ProxyVideoDownloader;

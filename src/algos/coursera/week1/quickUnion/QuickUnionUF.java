@@ -1,4 +1,4 @@
-package algos.coursera.week1;
+package algos.coursera.week1.quickUnion;
 
 // Quick-union is also too slow
 public class QuickUnionUF {
