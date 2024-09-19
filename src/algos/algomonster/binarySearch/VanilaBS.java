@@ -27,6 +27,7 @@ public class VanilaBS {
     }
 
     public static List<String> splitWords(String s) {
+
         return s.isEmpty() ? List.of() : Arrays.asList(s.split(" "));
     }
 

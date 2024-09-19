@@ -105,14 +105,18 @@ public class Main {
 //        myStack.pop();
 //        System.out.println(myStack.size());
 
-        MyQueue<Integer> myQueue = new MyQueue<>();
-        for (int i = 0; i < 3; i++) {
-            myQueue.enqueue(i);
-        }
+//        MyQueue<Integer> myQueue = new MyQueue<>();
+//        for (int i = 0; i < 3; i++) {
+//            myQueue.enqueue(i);
+//        }
+//
+//        System.out.println(myQueue.size());
+//        System.out.println(myQueue.peek());
+//        System.out.println("dequeued: " + myQueue.dequeue());
+//        System.out.println(myQueue.size());
 
-        System.out.println(myQueue.size());
-        System.out.println(myQueue.peek());
-        System.out.println("dequeued: " + myQueue.dequeue());
-        System.out.println(myQueue.size());
+        int[] n1 = {1, 2};
+        int[] n2 = {1, 2};
+        System.out.println(n1 == n2);
     }
 }
