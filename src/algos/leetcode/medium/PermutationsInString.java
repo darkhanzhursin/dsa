@@ -3,7 +3,7 @@ package algos.leetcode.medium;
 public class PermutationsInString {
 
     public static void main(String[] args) {
-        checkInclusion("ab", "eidbaooo");
+        checkInclusion("ab", "eidboaoo");
     }
 
     public static boolean checkInclusion(String s1, String s2) {
@@ -19,9 +19,12 @@ public class PermutationsInString {
 
         while (j < s2.length()) {
             //if after decrementing char at j index in s2 is still greater than 0 means we have found 1 char
-            if(map[s2.charAt(j++) - 'a']-- > 0){
+            char l = s2.charAt(j);
+            if(map[l - 'a'] > 0){
                 count_chars--;//decrease the count of chars we need to find
             }
+            map[l - 'a']--;
+            j++;
 
             if(count_chars == 0){// we have found all the chars
                 return true;

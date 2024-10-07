@@ -21,4 +21,17 @@ public class InsertionSort extends Sorter {
 		  }
 		  return anArray;
 	}
+
+	// Sort from index l to r in the given array
+	public void sort(int[] arr, int l, int r) {
+		for (int i = l + 1; i <= r; i++) {
+			int tmp = arr[i];
+			int j = i;
+			while (j > l && arr[j - 1] > tmp) {
+				arr[j] = arr[j - 1];
+				j--;
+			}
+			arr[j] = tmp;
+		}
+	}
 }

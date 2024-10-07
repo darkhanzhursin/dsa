@@ -1,4 +1,4 @@
-package algos.miu;
+package algos.miu.lab1;
 
 public class MergeTwoArrays {
     public static void main(String[] args) {

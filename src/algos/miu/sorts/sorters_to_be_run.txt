@@ -1,3 +1,7 @@
 BubbleSort
 InsertionSort
 SelectionSort
+MergeSort
+CountingSort
+MergeSortPlus
+BSTSort
