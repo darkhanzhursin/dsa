@@ -1,4 +1,4 @@
-package oop;
+package oop.animal;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,5 +12,8 @@ public class Main {
             animal.makeSound();
             System.out.println(animal);
         }
+
+        Animal cat = new Cat("Boris", 10);
+        cat.makeSound();
     }
 }

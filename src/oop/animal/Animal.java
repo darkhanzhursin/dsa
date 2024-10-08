@@ -1,4 +1,4 @@
-package oop;
+package oop.animal;
 
 public class Animal {
 

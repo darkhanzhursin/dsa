@@ -1,4 +1,4 @@
-package oop;
+package oop.animal;
 
 // Cat class (subclass of Animal)
 class Cat extends Animal {

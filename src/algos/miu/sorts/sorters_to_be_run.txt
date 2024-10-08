@@ -5,3 +5,7 @@ MergeSort
 CountingSort
 MergeSortPlus
 BSTSort
+QuickSort
+ShellSort
+HeapSort
+RadixSort
