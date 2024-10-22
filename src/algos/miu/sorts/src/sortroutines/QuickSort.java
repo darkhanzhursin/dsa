@@ -4,7 +4,7 @@ import algos.miu.sorts.src.runtime.Sorter;
 
 public class QuickSort extends Sorter {
     public static void main(String[] args) {
-        int[] E = {-5, 3, 2, 1, -3, -3, 7, 2, 2};
+        int[] E = {1, 6, 2, 4, 3, 5};
         quickSort(E, 0, E.length - 1);
         System.out.println("Sorted Array: " + java.util.Arrays.toString(E));
     }
@@ -29,14 +29,16 @@ public class QuickSort extends Sorter {
         for (int j = low; j < high; j++) {
             if (arr[j] <= pivot) {
                 i++;
-                int temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
+                swap(arr, i, j);
             }
         }
-        int temp = arr[i + 1];
-        arr[i + 1] = arr[high];
-        arr[high] = temp;
+        swap(arr, i + 1, high);
         return i + 1;
+    }
+
+    private static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 }

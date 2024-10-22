@@ -34,4 +34,9 @@ public class InsertionSort extends Sorter {
 			arr[j] = tmp;
 		}
 	}
+
+	public static void main(String[] args) {
+		InsertionSort sort = new InsertionSort();
+		sort.sort(new int[]{3, 1, 2});
+	}
 }

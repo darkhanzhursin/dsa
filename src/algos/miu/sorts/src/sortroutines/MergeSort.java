@@ -3,8 +3,7 @@ package algos.miu.sorts.src.sortroutines;
 import algos.miu.sorts.src.runtime.Sorter;
 
 public class MergeSort extends Sorter {
-	final int ARRAY_SIZE = 33;
-	final int MAX_VAL = 1000;
+
 	int[] theArray;
 
 
